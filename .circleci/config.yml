@@ -5,6 +5,12 @@ jobs:
       - image: ocaml/opam:debian-9_ocaml-4.04.2
         environment:
           TERM: xterm
+      - image: microsoft/mssql-server-linux:2017-CU4
+        environment:
+          ACCEPT_EULA: Y
+          # This password oesn't matter but SQL server requires it to pass
+          # a complexity check
+          SA_PASSWORD: 'ON0%*!aaqJjeB2E7'
       - image: circleci/postgres:alpine-ram
         environment:
           POSTGRES_USER: test
@@ -23,6 +29,9 @@ jobs:
           command: |
             opam remote remove default
             opam remote add default https://opam.ocaml.org
+      - run:
+          name: Pin Freetds until Dune support is released
+          command: opam pin add -yn freetds https://github.com/kennknowles/ocaml-freetds.git
       - run:
           name: Pin packages
           command: |
@@ -43,6 +52,7 @@ jobs:
           command: |
             echo "
                 sqlite3::memory:
+                mssql://sa:ON0%25%2A%21aaqJjeB2E7@localhost/master
                 postgresql://test@localhost/test
             " > tests/uris.conf
             opam config exec -- jbuilder runtest

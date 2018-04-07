@@ -121,6 +121,21 @@
 
 (alias
  ((name drivers)
+  (package caqti-driver-mssql)
+  (deps (META.caqti-driver-mssql
+         ../lib-driver/caqti_driver_mssql.cma
+         ../lib-driver/caqti_driver_mssql.cmxs))))
+(rule
+ ((targets (META.caqti-driver-mssql))
+  (deps (../META.caqti-driver-mssql))
+  (action
+   (with-stdout-to ${@}
+    (progn
+      (echo "directory = \"../lib-driver\"\n")
+      (cat ${<}))))))
+
+(alias
+ ((name drivers)
   (package caqti-driver-sqlite3)
   (deps (META.caqti-driver-sqlite3
          ../lib-driver/caqti_driver_sqlite3.cma

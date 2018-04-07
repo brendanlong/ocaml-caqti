@@ -14,8 +14,8 @@
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-type dialect_tag = [`Mysql | `Pgsql | `Sqlite | `Other]
-type sql_dialect_tag = [`Mysql | `Pgsql | `Sqlite]
+type dialect_tag = [`Mssql | `Mysql | `Pgsql | `Sqlite | `Other]
+type sql_dialect_tag = [`Mssql | `Mysql | `Pgsql | `Sqlite]
 type parameter_style =
   [ `None
   | `Linear of string

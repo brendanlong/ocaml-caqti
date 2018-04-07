@@ -15,6 +15,14 @@
   (libraries (caqti mariadb))))
 
 (library
+ ((name caqti_driver_mssql)
+  (public_name caqti-driver-mssql)
+  (wrapped false)
+  (modules (Caqti_driver_mssql))
+  (library_flags (:standard -linkall))
+  (libraries (caqti freetds))))
+
+(library
  ((name caqti_driver_sqlite3)
   (public_name caqti-driver-sqlite3)
   (wrapped false)

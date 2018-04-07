@@ -28,6 +28,7 @@ val ncompose : int -> ('a -> 'a) -> 'a -> 'a
 module Option : sig
   type 'a t = 'a option
   val fold : ('a -> 'b -> 'b) -> 'a option -> 'b -> 'b
+  val iter : ('a -> unit) -> 'a option -> unit
 end
 
 module Result : sig

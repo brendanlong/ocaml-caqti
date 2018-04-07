@@ -19,10 +19,10 @@
     This module provides descriptions supplied by the driver to aid the
     application in dealing with differences between database systems. *)
 
-type dialect_tag = private [> `Mysql | `Pgsql | `Sqlite]
+type dialect_tag = private [> `Mssql | `Mysql | `Pgsql | `Sqlite]
 (** A tag used for easy dispatching between query languages. *)
 
-type sql_dialect_tag = [`Mysql | `Pgsql | `Sqlite]
+type sql_dialect_tag = [`Mssql | `Mysql | `Pgsql | `Sqlite]
 (** Subtype of the above which includes only known SQL dialects. *)
 
 type parameter_style = private [>
